@@ -110,7 +110,6 @@ import store from '../store'
       this.category = data.results[0].category;
       this.difficulty = data.results[0].difficulty;
     },
-    // it's set to any for now because the compiler says this function doesn't exist on strings
     replaceEncodedCharacters(text: any) {
       return text.replaceAll('&quot;', '"').replaceAll('&#039;', '\'');
     },
