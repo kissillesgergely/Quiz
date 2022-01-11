@@ -101,7 +101,7 @@ import store from '../store'
         0,
         data.results[0].correct_answer
       );
-      this.correctAnswer = data.results[0].correct_answer;
+      this.correctAnswer = this.replaceEncodedCharacters(data.results[0].correct_answer);
       let counter = 0;
       this.answers = temporaryAnswers.map((answer: any) => ({
         index: counter++,
@@ -111,8 +111,17 @@ import store from '../store'
       this.difficulty = data.results[0].difficulty;
     },
     replaceEncodedCharacters(text: any) {
-      return text.replaceAll('&quot;', '"').replaceAll('&#039;', '\'');
+      return text.replaceAll('&quot;', '"')
+        .replaceAll('&amp;', '&')
+        .replaceAll('&#039;', '\'')
+        .replaceAll('&reg;', '®')
+        .replaceAll('&trade;', '™');
     },
+    decodeHtmlCharCodes(str: string) {
+      return     str.replace(/(&#(\d+);)/g, (match, capture, charCode) => 
+      String.fromCharCode(charCode));
+    } 
+
   },
 })
 export default class Game extends Vue {}

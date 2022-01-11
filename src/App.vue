@@ -5,8 +5,20 @@
       <router-link to="/stats">Stats</router-link>
     </div>
     <router-view />
+    <acknowledgement></acknowledgement>
   </div>
 </template>
+
+<script>
+import { Options, Vue } from "vue-class-component";
+import acknowledgement from "./components/Acknowledgement.vue"
+
+@Options({
+  components: {
+    acknowledgement: acknowledgement
+  },
+}) export default class App extends Vue {}
+</script>
 
 <style>
 #app {
