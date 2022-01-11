@@ -11,11 +11,11 @@
 
 <script>
 import { Options, Vue } from "vue-class-component";
-import acknowledgement from "./components/Acknowledgement.vue"
+import acknowledgement from "./components/Acknowledgement.vue";
 
 @Options({
   components: {
-    acknowledgement: acknowledgement
+    acknowledgement: acknowledgement,
   },
 }) export default class App extends Vue {}
 </script>

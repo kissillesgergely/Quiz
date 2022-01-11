@@ -117,11 +117,6 @@ import store from '../store'
         .replaceAll('&reg;', '®')
         .replaceAll('&trade;', '™');
     },
-    decodeHtmlCharCodes(str: string) {
-      return     str.replace(/(&#(\d+);)/g, (match, capture, charCode) => 
-      String.fromCharCode(charCode));
-    } 
-
   },
 })
 export default class Game extends Vue {}

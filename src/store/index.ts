@@ -9,18 +9,20 @@ export default new Vuex.Store({
     correct: 0,
     wrong: 0,
     difficulties: {
-
+      easy: {correct: 0, wrong: 0},
+      medium: {correct: 0, wrong: 0},
+      hard: {correct: 0, wrong: 0}
     },
     categories: {
     'General Knowledge': {correct: 0, wrong: 0},
     'Entertainment: Books': {correct: 0, wrong: 0},
     'Entertainment: Film': {correct: 0, wrong: 0},
     'Entertainment: Music': {correct: 0, wrong: 0},
-    'Entertainment: Musicals &amp; Theatres': {correct: 0, wrong: 0},
+    'Entertainment: Musicals & Theatres': {correct: 0, wrong: 0},
     'Entertainment: Television': {correct: 0, wrong: 0},
     'Entertainment: Video Games': {correct: 0, wrong: 0},
     'Entertainment: Board Games': {correct: 0, wrong: 0},
-    'Science &amp; Nature': {correct: 0, wrong: 0},
+    'Science & Nature': {correct: 0, wrong: 0},
     'Science: Computers': {correct: 0, wrong: 0},
     'Science: Mathematics': {correct: 0, wrong: 0},
     'Mythology': {correct: 0, wrong: 0},
@@ -34,8 +36,8 @@ export default new Vuex.Store({
     'Vehicles': {correct: 0, wrong: 0},
     'Entertainment: Comics': {correct: 0, wrong: 0},
     'Science: Gadgets': {correct: 0, wrong: 0},
-    'Entertainment: Japanese Anime &amp; Manga': {correct: 0, wrong: 0},
-    'Entertainment: Cartoon &amp; Animations': {correct: 0, wrong: 0},
+    'Entertainment: Japanese Anime & Manga': {correct: 0, wrong: 0},
+    'Entertainment: Cartoon & Animations': {correct: 0, wrong: 0},
     },
   },
   mutations: {
