@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <form @submit.prevent>
       <label>Category: <strong>{{ category }}</strong></label>
       <br />
