@@ -75,12 +75,20 @@ import store from '../store'
   },
   methods: {
     submit(answer: string, index: number) {
+      console.log(this.category);
+      console.log(this.difficulty);
       if (answer === this.correctAnswer) {
         this.scored = true;
-        store.commit('increaseCorrect');
+        store.commit('increaseCorrect', {
+          difficulty: this.difficulty,
+          category: this.category
+        });
       } else {
         this.scored = false;
-        store.commit('increaseWrong');
+        store.commit('increaseWrong', {
+          difficulty: this.difficulty,
+          category: this.category
+        });
       }
 
       this.activeIndex = index;
@@ -110,7 +118,7 @@ import store from '../store'
       this.category = data.results[0].category;
       this.difficulty = data.results[0].difficulty;
     },
-    replaceEncodedCharacters(text: any) {
+    replaceEncodedCharacters(text: string) {
       return text.replaceAll('&quot;', '"')
         .replaceAll('&amp;', '&')
         .replaceAll('&#039;', '\'')

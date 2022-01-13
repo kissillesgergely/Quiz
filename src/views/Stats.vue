@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Overall</h2>
+    <h2 class="text-2xl"><strong>Overall</strong></h2>
     <label>Correct answers: {{ $store.state.correct }}</label>
     <br />
     <label>Wrong answers: {{ $store.state.wrong }}</label>
@@ -11,32 +11,36 @@
       :correctColor="'#32CD32'"
       :wrongColor="'#DC143C'"
     ></doughnut-chart>
-    <p v-else>No answers yet</p>
-
-    <h2>By Difficulty</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <p v-else class="italic text-gray-400">No answers yet</p>
+    <hr class="m-6">
+    <h2 class="text-2xl"><strong>By Difficulty</strong></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-4 mt-8">
       <div v-for="(value, key) in $store.state.difficulties" :key="key">
         <doughnut-chart
-          v-if="$store.state.correct || $store.state.wrong"
+          v-if="$store.state.difficulties[key].correct || $store.state.difficulties[key].wrong"
           :correct="$store.state.difficulties[key].correct"
           :wrong="$store.state.difficulties[key].wrong"
           :correctColor="'#32CD32'"
           :wrongColor="'#DC143C'"
         ></doughnut-chart>
-        <p v-else>No answers yet</p>
+        <p v-else class="m-4 italic text-gray-400">No answers yet</p>
         {{ key }}
-      </div>      
+      </div>
     </div>
-
-    <h2>By Category</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div>01</div>
-      <!-- ... -->
-              <!-- {{ value.correct }}
-        <br />
-        {{ value.wrong }}
-        <br /> -->
-      <div>09</div>
+    <hr class="m-5">
+    <h2 class="text-2xl"><strong>By Category</strong></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-4 mt-8">
+      <div v-for="(value, key) in $store.state.categories" :key="key">
+        <doughnut-chart
+          v-if="$store.state.categories[key].correct || $store.state.categories[key].wrong"
+          :correct="$store.state.categories[key].correct"
+          :wrong="$store.state.categories[key].wrong"
+          :correctColor="'#32CD32'"
+          :wrongColor="'#DC143C'"
+        ></doughnut-chart>
+        <p v-else class="m-4 italic text-gray-400">No answers yet</p>
+        {{ key }}
+      </div>
     </div>
   </div>
 </template>
