@@ -115,7 +115,7 @@ import store from '../store'
         index: counter++,
         answer: this.replaceEncodedCharacters(answer),
       }));
-      this.category = data.results[0].category;
+      this.category = this.replaceEncodedCharacters(data.results[0].category);
       this.difficulty = data.results[0].difficulty;
     },
     replaceEncodedCharacters(text: string) {
