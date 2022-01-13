@@ -42,19 +42,11 @@ export default new Vuex.Store({
   },
   mutations: {
     increaseCorrect(state, {difficulty, category}) {
-      console.log(difficulty);
-      console.log(state.difficulties[difficulty]);
-      console.log(category);
-      console.log(state.categories[category]);
       state.correct++;
       state.difficulties[difficulty].correct++;
       state.categories[category].correct++;
     },
     increaseWrong(state, {difficulty, category}) {
-      console.log(difficulty);
-      console.log(state.difficulties[difficulty]);
-      console.log(category);
-      console.log(state.categories[category]);
       state.wrong++;
       state.difficulties[difficulty].wrong++;
       state.categories[category].wrong++;

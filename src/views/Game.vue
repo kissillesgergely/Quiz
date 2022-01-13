@@ -75,8 +75,6 @@ import store from '../store'
   },
   methods: {
     submit(answer: string, index: number) {
-      console.log(this.category);
-      console.log(this.difficulty);
       if (answer === this.correctAnswer) {
         this.scored = true;
         store.commit('increaseCorrect', {
