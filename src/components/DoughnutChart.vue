@@ -1,5 +1,6 @@
 <template>
   <apexchart
+      v-if="correct || wrong"
       type="donut"
       width="240"
       :options="chartOptions"
@@ -7,6 +8,7 @@
       style="display: unset"
       align="center"
   ></apexchart>
+  <p v-else class="m-4 italic text-gray-400">No answers yet</p>
 </template>
 
 <script>
