@@ -1,19 +1,21 @@
 <template>
-  <div class="text-center">
+  <div>
     <h2 class="text-2xl"><strong>Overall</strong></h2>
     <label>Correct answers: {{ $store.state.correct }}</label>
     <br />
     <label>Wrong answers: {{ $store.state.wrong }}</label>
-    <doughnut-chart     
-      :correct="$store.state.correct"
-      :wrong="$store.state.wrong"
-      :correctColor="colors.primaryGreen"
-      :wrongColor="colors.primaryRed"
-    ></doughnut-chart>
+    <div class="grid items-center justify-items-center content-center">
+      <doughnut-chart     
+        :correct="$store.state.correct"
+        :wrong="$store.state.wrong"
+        :correctColor="colors.primaryGreen"
+        :wrongColor="colors.primaryRed"
+      ></doughnut-chart>
+    </div>
     <hr class="m-6">
   
     <h2 class="text-2xl"><strong>By Difficulty</strong></h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-4 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-4 mt-8 content-center items-center justify-items-center">
       <div v-for="(value, key) in $store.state.difficulties" :key="key">
         <doughnut-chart
           :correct="$store.state.difficulties[key].correct"
@@ -21,13 +23,13 @@
           :correctColor="colors.secondaryGreen"
           :wrongColor="colors.secondaryRed"
         ></doughnut-chart>
-        {{ key }}
+        <p style="max-width: 240px !important">{{ key }}</p>
       </div>
     </div>
 
     <hr class="m-5">
     <h2 class="text-2xl"><strong>By Category</strong></h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-4 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-4 mt-8 content-center items-center justify-items-center">
       <div v-for="(value, key) in $store.state.categories" :key="key">
         <doughnut-chart          
           :correct="$store.state.categories[key].correct"
@@ -35,7 +37,7 @@
           :correctColor="colors.tertiaryGreen"
           :wrongColor="colors.tertiaryRed"
         ></doughnut-chart>
-        {{ key }}
+        <p style="max-width: 240px !important">{{ key }}</p>
       </div>
     </div>
     <button 

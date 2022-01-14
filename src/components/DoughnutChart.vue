@@ -6,7 +6,6 @@
       :options="chartOptions"
       :series="series"
       style="display: unset"
-      align="center"
   ></apexchart>
   <p v-else class="m-4 italic text-gray-400">No answers yet</p>
 </template>
