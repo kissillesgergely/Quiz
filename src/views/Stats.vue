@@ -54,6 +54,9 @@
 import { Options, Vue } from "vue-class-component";
 import DoughnutChart from '@/components/DoughnutChart.vue';
 
+import { db } from '../firebase';
+import { debounce } from 'debounce';
+
 @Options({
   components: {
     DoughnutChart: DoughnutChart,
@@ -67,7 +70,8 @@ import DoughnutChart from '@/components/DoughnutChart.vue';
         secondaryRed: '#ffbfad',
         tertiaryGreen: '#00a341',
         tertiaryRed: '#ff8f70'
-      }
+      },
+      firebase: null,
     }
   },
   methods: {
@@ -77,7 +81,7 @@ import DoughnutChart from '@/components/DoughnutChart.vue';
         location.reload();
         window.scrollTo(0, 0);
       }
-    },
+    }
   }
 })
 export default class Stats extends Vue {}

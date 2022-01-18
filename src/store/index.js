@@ -50,8 +50,21 @@ export default new Vuex.Store({
       state.wrong++;
       state.difficulties[difficulty].wrong++;
       state.categories[category].wrong++;
+    },
+    updateCurrentUser(state, {currentUser}) {
+      state.currentUser = currentUser;
+    },
+    emptyCurrentUser(state) {
+      state.currentUser = null;
     }
   },
-  actions: {},
+  actions: {
+    increaseCorrect() {
+
+    },
+    increaseWrong() {
+
+    }
+  },
   modules: {},
 });

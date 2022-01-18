@@ -2,7 +2,8 @@
   <div>
     <div id="nav">
       <router-link to="/">Game</router-link> |
-      <router-link to="/stats">Stats</router-link>
+      <router-link to="/stats">Stats</router-link> |
+      <router-link to="/sign-in">Sign In</router-link>
     </div>
     <router-view />
     <acknowledgement></acknowledgement>
@@ -17,6 +18,9 @@ import acknowledgement from "./components/Acknowledgement.vue";
   components: {
     acknowledgement: acknowledgement,
   },
+  async created() {
+
+  }
 }) export default class App extends Vue {}
 </script>
 

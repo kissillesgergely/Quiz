@@ -1,12 +1,12 @@
 <template>
   <div>
     <form @submit.prevent>
-      <label>Category: <strong>{{ category }}</strong></label>
+      <label class="mx-4">Category: <strong>{{ category }}</strong></label>
       <br />
-      <label>Difficulty: <strong>{{ difficulty }}</strong></label>
+      <label class="mx-4">Difficulty: <strong>{{ difficulty }}</strong></label>
       <br />
       <br />
-      <label>{{ question }}</label>
+      <label class="mx-4">{{ question }}</label>
       <br />
       <br />
       <div v-for="item in answers" :key="item.index">
