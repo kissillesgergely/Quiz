@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore/lite';
 import { getAuth, setPersistence, browserSessionPersistence } from 'firebase/auth';
-// import { getDatabase } from "firebase/database";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyAumsTFXw9KlNUUHHf5GhgBgok61dIrrg0",
@@ -16,8 +15,6 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
 setPersistence(auth, browserSessionPersistence);
-
-console.log('in the firebase file');
 
 export { firebaseApp };
 export { auth };

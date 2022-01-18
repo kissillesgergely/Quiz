@@ -54,7 +54,7 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import store from '../store'
+import store from '../store';
 
 @Options({
   data() {
@@ -77,13 +77,13 @@ import store from '../store'
     submit(answer: string, index: number) {
       if (answer === this.correctAnswer) {
         this.scored = true;
-        store.commit('increaseCorrect', {
+        store.dispatch('increaseCorrect', {
           difficulty: this.difficulty,
           category: this.category
         });
       } else {
         this.scored = false;
-        store.commit('increaseWrong', {
+        store.dispatch('increaseWrong', {
           difficulty: this.difficulty,
           category: this.category
         });

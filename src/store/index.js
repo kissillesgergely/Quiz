@@ -1,69 +1,64 @@
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
+import { doc, setDoc, getDoc } from 'firebase/firestore/lite';
+import { userDataTemplate } from '../models/userDataTemplate';
+import { db, auth } from '../firebase';
 
 export default new Vuex.Store({
   plugins: [createPersistedState({
-    storage: window.localStorage,
+    storage: window.sessionStorage,
   })],
   state: {
-    correct: 0,
-    wrong: 0,
-    difficulties: {
-      easy: {correct: 0, wrong: 0},
-      medium: {correct: 0, wrong: 0},
-      hard: {correct: 0, wrong: 0}
-    },
-    categories: {
-      'General Knowledge': {correct: 0, wrong: 0},
-      'Entertainment: Books': {correct: 0, wrong: 0},
-      'Entertainment: Film': {correct: 0, wrong: 0},
-      'Entertainment: Music': {correct: 0, wrong: 0},
-      'Entertainment: Musicals & Theatres': {correct: 0, wrong: 0},
-      'Entertainment: Television': {correct: 0, wrong: 0},
-      'Entertainment: Video Games': {correct: 0, wrong: 0},
-      'Entertainment: Board Games': {correct: 0, wrong: 0},
-      'Science & Nature': {correct: 0, wrong: 0},
-      'Science: Computers': {correct: 0, wrong: 0},
-      'Science: Mathematics': {correct: 0, wrong: 0},
-      'Mythology': {correct: 0, wrong: 0},
-      'Sports': {correct: 0, wrong: 0},
-      'Geography' : {correct: 0, wrong: 0},
-      'History': {correct: 0, wrong: 0},
-      'Politics': {correct: 0, wrong: 0},
-      'Art': {correct: 0, wrong: 0},
-      'Celebrities': {correct: 0, wrong: 0},
-      'Animals': {correct: 0, wrong: 0},
-      'Vehicles': {correct: 0, wrong: 0},
-      'Entertainment: Comics': {correct: 0, wrong: 0},
-      'Science: Gadgets': {correct: 0, wrong: 0},
-      'Entertainment: Japanese Anime & Manga': {correct: 0, wrong: 0},
-      'Entertainment: Cartoon & Animations': {correct: 0, wrong: 0},
-    },
+    userData: userDataTemplate
   },
   mutations: {
-    increaseCorrect(state, {difficulty, category}) {
-      state.correct++;
-      state.difficulties[difficulty].correct++;
-      state.categories[category].correct++;
+    increaseCorrect(state, { difficulty, category }) {
+      state.userData.correct++;
+      state.userData.difficulties[difficulty].correct++;
+      state.userData.categories[category].correct++;
     },
-    increaseWrong(state, {difficulty, category}) {
-      state.wrong++;
-      state.difficulties[difficulty].wrong++;
-      state.categories[category].wrong++;
+    increaseWrong(state, { difficulty, category }) {
+      state.userData.wrong++;
+      state.userData.difficulties[difficulty].wrong++;
+      state.userData.categories[category].wrong++;
     },
-    updateCurrentUser(state, {currentUser}) {
-      state.currentUser = currentUser;
+    updateWholeUserData(state, userData) {
+      state.userData = userData;
     },
-    emptyCurrentUser(state) {
-      state.currentUser = null;
+    eraseUserData(state) {
+      state.userData = userDataTemplate;
     }
   },
   actions: {
-    increaseCorrect() {
-
+    async increaseCorrect({ commit, state }, { difficulty, category }) {
+      commit('increaseCorrect', { difficulty, category });
+      if(auth.currentUser) {
+        const userDataRef = doc(db, 'userData', `${auth.currentUser.uid}`);
+        await setDoc(userDataRef, state.userData, {merge: true});
+      }
     },
-    increaseWrong() {
+    async increaseWrong({ commit, state }, { difficulty, category }) {
+      commit('increaseWrong', { difficulty, category });
+      if(auth.currentUser) {
+        const userDataRef = doc(db, 'userData', `${auth.currentUser.uid}`);
+        await setDoc(userDataRef, state.userData, {merge: true});
+      }
+    },
+    async createUserData() {
+      const userDataRef = doc(db, `userData/${auth.currentUser.uid}`);
+      await setDoc(userDataRef, userDataTemplate, {merge: true});
 
+      commit('updateWholeUserData', userDataTemplate);
+    },
+    async updateDataWithFirebaseData({ commit }) {
+      try {
+        const userDataRef = doc(db, 'userData', `${auth.currentUser.uid}`);
+        const userData = await getDoc(userDataRef);
+        commit('updateWholeUserData', userData.data());
+      } catch(e) {
+        console.log('fetching user data was not successful');
+        console.log(e);
+      }
     }
   },
   modules: {},

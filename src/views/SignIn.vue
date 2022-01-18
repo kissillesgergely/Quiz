@@ -21,7 +21,9 @@
 <script>
 import { Options, Vue } from 'vue-class-component';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { db, auth } from '../firebase';
+import store from '../store';
+import { doc, getDoc } from 'firebase/firestore/lite';
 
 @Options({
   data() {
@@ -36,11 +38,13 @@ import { auth } from '../firebase';
   methods: {    
     async signIn() {
       try {
-        await signInWithEmailAndPassword(auth, this.email, this.password);
+        await signInWithEmailAndPassword(auth, this.email, this.password); 
       } catch(e) {
         console.log('login was not successful');
         console.log(e);
       }
+
+      store.dispatch('updateDataWithFirebaseData');
     }
   }
 })

@@ -22,10 +22,8 @@
 <script>
 import { Options, Vue } from 'vue-class-component';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { addDoc, getFirestore, collection, getDocs, doc, setDoc, getDoc } from 'firebase/firestore/lite';
-import { auth, db } from '../firebase';
+import { auth } from '../firebase';
 import store from '../store';
-import { userData } from '../models/userData';
 
 @Options({
   data() {
@@ -63,7 +61,7 @@ import { userData } from '../models/userData';
 
       try {
         await createUserWithEmailAndPassword(auth, this.email, this.password);
-        this.createUserData();
+        store.dispatch('createUserData');
       } catch (e) {
         console.log('user registration was not successful');
         console.log(e);
@@ -74,11 +72,6 @@ import { userData } from '../models/userData';
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
     },
-    async createUserData() {
-      const sample = doc(db, `userData/${auth.currentUser.uid}`);
-      const sampleData = userData;
-      await setDoc(sample, sampleData, {merge: true});
-    }
   }
 })
 export default class SignUp extends Vue {}

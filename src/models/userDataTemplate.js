@@ -1,4 +1,4 @@
-export const userData = {
+export const userDataTemplate = {
   correct: 0,
   wrong: 0,
   difficulties: {

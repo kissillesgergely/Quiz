@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Game</router-link> |
       <router-link to="/stats">Stats</router-link> |
-      <router-link to="/sign-in">Sign In</router-link>
+      <router-link v-if="!currentUser" to="/sign-in">Sign In</router-link>
+      <router-link v-else to="/" @click.prevent="logOut()">Log Out</router-link>
     </div>
     <router-view />
     <acknowledgement></acknowledgement>
@@ -13,13 +14,23 @@
 <script>
 import { Options, Vue } from "vue-class-component";
 import acknowledgement from "./components/Acknowledgement.vue";
+import { auth } from './firebase';
+import store from './store';
 
 @Options({
   components: {
     acknowledgement: acknowledgement,
   },
-  async created() {
-
+  data() {
+    return {
+      currentUser: auth.currentUser,
+    }
+  },
+  methods: {
+    async logOut() {
+      await auth.signOut();
+      store.commit('eraseUserData');
+    }
   }
 }) export default class App extends Vue {}
 </script>
