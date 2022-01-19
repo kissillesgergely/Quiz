@@ -9,7 +9,8 @@ export default new Vuex.Store({
     storage: window.sessionStorage,
   })],
   state: {
-    userData: userDataTemplate
+    userData: userDataTemplate,
+    signedIn: false,
   },
   mutations: {
     increaseCorrect(state, { difficulty, category }) {
@@ -27,6 +28,12 @@ export default new Vuex.Store({
     },
     eraseUserData(state) {
       state.userData = userDataTemplate;
+    },
+    signedIn(state) {
+      state.signedIn = true;
+    },
+    signedOut(state) {
+      state.signedIn = false;
     }
   },
   actions: {

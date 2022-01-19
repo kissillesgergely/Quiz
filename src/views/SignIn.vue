@@ -38,13 +38,16 @@ import { doc, getDoc } from 'firebase/firestore/lite';
   methods: {    
     async signIn() {
       try {
-        await signInWithEmailAndPassword(auth, this.email, this.password); 
+        await signInWithEmailAndPassword(auth, this.email, this.password);
+        await store.dispatch('updateDataWithFirebaseData');
+        store.commit('signedIn');
       } catch(e) {
         console.log('login was not successful');
         console.log(e);
       }
 
       store.dispatch('updateDataWithFirebaseData');
+      window.location = '/';
     }
   }
 })
