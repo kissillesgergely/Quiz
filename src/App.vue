@@ -4,7 +4,7 @@
       <router-link to="/">Game</router-link> |
       <router-link to="/stats">Stats</router-link> |
       <router-link v-if="!$store.state.signedIn" to="/sign-in">Sign In</router-link>
-      <router-link v-else to="/sign-in" @click.prevent="logOut()">Log Out</router-link>
+      <router-link v-else to="/sign-in" @click.prevent="signOut()">Sign Out</router-link>
     </div>
     <router-view />
     <acknowledgement></acknowledgement>
@@ -22,7 +22,7 @@ import store from './store';
     acknowledgement: acknowledgement,
   },
   methods: {
-    async logOut() {
+    async signOut() {
       await auth.signOut();
       store.commit('eraseUserData');
       store.commit('signedOut');

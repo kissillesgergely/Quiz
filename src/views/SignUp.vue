@@ -62,6 +62,8 @@ import store from '../store';
       try {
         await createUserWithEmailAndPassword(auth, this.email, this.password);
         store.dispatch('createUserData');
+        store.commit('signedIn');
+        window.location = '/';
       } catch (e) {
         console.log('user registration was not successful');
         console.log(e);

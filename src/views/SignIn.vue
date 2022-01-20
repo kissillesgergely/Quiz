@@ -15,15 +15,14 @@
   <br />
   Don't have an account yet?
   <br />
-  <router-link to="/sign-up">Sign up here</router-link>
+  <router-link to="/sign-up" class="text-blue-600 underline">Sign up here</router-link>
 </template>
 
 <script>
 import { Options, Vue } from 'vue-class-component';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { db, auth } from '../firebase';
+import { auth } from '../firebase';
 import store from '../store';
-import { doc, getDoc } from 'firebase/firestore/lite';
 
 @Options({
   data() {
