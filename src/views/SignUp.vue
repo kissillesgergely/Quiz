@@ -11,6 +11,7 @@
     <input v-model="passwordRepeat" type="password" class="twc-text-input"/>
     <br />
     <br />
+    <label v-if="signUpFail" class="twc-label">Couldn't sign up, the email might be in use already </label>
     <button 
       @click="signUp"
       class="w-40 twc-button"
@@ -35,10 +36,16 @@ import store from '../store';
       emailIncorrect: false,
       passwordsSame: false,
       passwordTooShort: false,
+      signUpFail: false,
     }
   },
   methods: {    
     async signUp() {
+      this.emailIncorrect = false;
+      this.passwordsSame = false;
+      this.passwordTooShort = false;
+      this.signUpFail = false;
+
       if (!this.validateEmail(this.email)) {
         this.emailIncorrect = true;
         return
@@ -66,8 +73,7 @@ import store from '../store';
         store.commit('signedIn');
         window.location = '/';
       } catch (e) {
-        console.log('user registration was not successful');
-        console.log(e);
+        this.signUpFail = true;
       }
     },
     validateEmail(email) {

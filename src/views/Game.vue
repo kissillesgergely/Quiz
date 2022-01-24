@@ -98,7 +98,7 @@ import store from '../store';
       this.scored = false;
       this.activeIndex = -1;
 
-      const response = await fetch('https://opentdb.com/api.php?amount=1');
+      const response = await fetch(process.env.VUE_APP_API_URL);
       const data = await response.json();
       this.question = this.replaceEncodedCharacters(data.results[0].question);
       const temporaryAnswers = data.results[0].incorrect_answers;

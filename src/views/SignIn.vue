@@ -6,7 +6,7 @@
     <input v-model="password" type="password" class="twc-text-input"/>
     <br />
     <br />
-    <span v-if="loginError" class="text-red-500 block">Couldn't log in, check your password and email</span>
+    <span v-if="loginError" class="text-red-500 block">Couldn't sign in, check your password and email</span>
     <button 
       @click="signIn"
       class="w-40 twc-button"
