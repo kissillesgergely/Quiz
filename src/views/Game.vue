@@ -13,7 +13,7 @@
         <button
           @click="submit(item.answer, item.index)"
           :disabled="hasAnswered"
-          class="w-64 text-gray-800 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow"
+          class="w-64 text-gray-800 twc-button"
           :class="[
             { 'bg-white hover:bg-gray-100': !hasAnswered },
             {
@@ -36,7 +36,7 @@
     <button
       @click="showAnswer = true"
       :disabled="!hasAnswered"
-      class="w-40 text-gray-800 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow"
+      class="w-40 text-gray-800 twc-button"
       :class="[{'bg-gray-400': !hasAnswered}]"
     >
       Show answer
@@ -44,7 +44,7 @@
     <button
       @click="nextQuestion"
       :disabled="!hasAnswered"
-      class="w-16 text-gray-800 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow"
+      class="w-16 text-gray-800 twc-button"
       :class="[{'bg-gray-400': !hasAnswered}]"
     >
       Next
@@ -121,7 +121,11 @@ import store from '../store';
         .replaceAll('&amp;', '&')
         .replaceAll('&#039;', '\'')
         .replaceAll('&reg;', '®')
-        .replaceAll('&trade;', '™');
+        .replaceAll('&trade;', '™')
+        .replaceAll('&eacute;', 'é')
+        .replaceAll('&uuml;', 'ü')
+        .replaceAll('&rsquo;', '’')
+        .replaceAll('&deg;', '°')
     },
   },
 })

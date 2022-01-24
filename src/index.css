@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* twc = tailwind custom */
+  .twc-button {
+    @apply font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow;
+  }
+  .twc-text-input {
+    @apply shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight;
+  }
+  .twc-label {
+    @apply block text-gray-700 text-sm font-bold m-3;
+  }
+}

@@ -1,18 +1,19 @@
 <template>
   <form @submit.prevent>
-    <label class="block text-gray-700 text-sm font-bold m-3">Email:</label>
+    <label class="twc-label">Email:</label>
     <span v-if="emailIncorrect" class="text-red-500 block">Enter a correct email address</span>
-    <input v-model="email" type="email" class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-    <label class="block text-gray-700 text-sm font-bold m-3">Password:</label>
+    <input v-model="email" type="email" class="twc-text-input"/>
+    <label class="twc-label">Password:</label>
     <span v-if="passwordTooShort" class="text-red-500 block">Use at least 5 characters</span>
-    <input v-model="password" type="password" class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-    <label class="block text-gray-700 text-sm font-bold m-3">Password again:</label>
+    <input v-model="password" type="password" class="twc-text-input"/>
+    <label class="twc-label">Password again:</label>
     <span v-if="passwordsSame" class="text-red-500 block">Passwords are not matching</span>
-    <input v-model="passwordRepeat" type="password" class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+    <input v-model="passwordRepeat" type="password" class="twc-text-input"/>
+    <br />
     <br />
     <button 
       @click="signUp"
-      class="w-40 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow"
+      class="w-40 twc-button"
     >
       Sign Up
     </button>

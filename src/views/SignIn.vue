@@ -1,13 +1,15 @@
 <template>
   <form @submit.prevent>
-    <label class="block text-gray-700 text-sm font-bold m-3">Email:</label>
-    <input v-model="email" type="email" class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-    <label class="block text-gray-700 text-sm font-bold m-3">Password:</label>
-    <input v-model="password" type="password" class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+    <label class="twc-label">Email:</label>
+    <input v-model="email" type="email" class="twc-text-input"/>
+    <label class="twc-label">Password:</label>
+    <input v-model="password" type="password" class="twc-text-input"/>
     <br />
+    <br />
+    <span v-if="loginError" class="text-red-500 block">Couldn't log in, check your password and email</span>
     <button 
       @click="signIn"
-      class="w-40 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow"
+      class="w-40 twc-button"
     >
       Sign In
     </button>
@@ -29,6 +31,7 @@ import store from '../store';
     return {
       email: '',
       password: '',
+      loginError: false,
     }
   },
   created() {
@@ -40,13 +43,11 @@ import store from '../store';
         await signInWithEmailAndPassword(auth, this.email, this.password);
         await store.dispatch('updateDataWithFirebaseData');
         store.commit('signedIn');
+        store.dispatch('updateDataWithFirebaseData');
+        window.location = '/';
       } catch(e) {
-        console.log('login was not successful');
-        console.log(e);
+        this.loginError = true;
       }
-
-      store.dispatch('updateDataWithFirebaseData');
-      window.location = '/';
     }
   }
 })

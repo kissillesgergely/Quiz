@@ -42,7 +42,7 @@
     </div>
     <button 
       @click="resetResults"
-      class="w-40 bg-red-600 text-white font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow"
+      class="w-40 bg-red-600 text-white twc-button"
 
     >
       Reset results
