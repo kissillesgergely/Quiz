@@ -1,10 +1,10 @@
 <template>
   <div>
     <div id="nav">
-      <router-link to="/">Game</router-link> |
-      <router-link to="/stats">Stats</router-link> |
-      <router-link v-if="!$store.state.signedIn" to="/sign-in">Sign In</router-link>
-      <router-link v-else to="/sign-in" @click.prevent="signOut()">Sign Out</router-link>
+      <router-link to="/" class="twc-button">Game</router-link>
+      <router-link to="/stats" class="twc-button">Stats</router-link>
+      <router-link v-if="!$store.state.signedIn" to="/sign-in" class="twc-button">Sign In</router-link>
+      <router-link v-else to="/sign-in" @click.prevent="signOut()" class="twc-button">Sign Out</router-link>
     </div>
     <router-view />
     <acknowledgement></acknowledgement>

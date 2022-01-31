@@ -8,6 +8,7 @@ const userDataOptom = {
   },
   categories: {
     'Ocular Abnormalities': {correct: 0, wrong: 0},
+    'Children and Special Needs': {correct: 0, wrong: 0}
   },
 }
 
