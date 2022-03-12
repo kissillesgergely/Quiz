@@ -16,6 +16,9 @@
       </a>
       <br />
     </div>
+    <div v-if="appVersion !== 'General'">
+      Questions provided by <a href="https://www.linkedin.com/in/anna-phanjakidze-402110196/">Anna Phanjakidze</a>
+    </div>
     <a href="https://www.flaticon.com/free-icons/quiz" title="quiz icons">Quiz icons created by Freepik - Flaticon</a>
   </div>
 </template>
