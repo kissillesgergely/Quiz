@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "optom": "vue-cli-service serve --mode optom",
     "build": "vue-cli-service build",
-    "build-optom": "vue-cli-service build --mode optom",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

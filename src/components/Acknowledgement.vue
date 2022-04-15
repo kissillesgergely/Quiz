@@ -1,6 +1,6 @@
 <template>
   <div class="mt-8 text-gray-300">
-    <div v-if="appVersion === 'General'">
+    <div>
       Questions provided by:
       <br />
       <a>https://opentdb.com/</a>
@@ -15,9 +15,6 @@
         Creative Commons Attribution-ShareAlike 4.0 International License.
       </a>
       <br />
-    </div>
-    <div v-if="appVersion !== 'General'">
-      Questions provided by <a href="https://www.linkedin.com/in/anna-phanjakidze-402110196/">Anna Phanjakidze</a>
     </div>
     <a href="https://www.flaticon.com/free-icons/quiz" title="quiz icons">Quiz icons created by Freepik - Flaticon</a>
   </div>

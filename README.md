@@ -1,7 +1,12 @@
 # Quiz
 
-Open Trivia version: http://quiz.shortuapp.com/  \
-Optometry version: http://optom-quiz.shortuapp.com/
+Available at: https://quiz.kiss-illes.com
+
+I created a private fork of this public repo and it serves optometry questions.
+The optometry version is under development, while this public version is not currently developed.
+For the optometry version I created an own API which serves the questions, provided by the
+Cardiff University optometry student Anna Phanjakidze.
+The optometry version is available at: https://optom.kiss-illes.com
 
 ## About the Game
 
@@ -18,11 +23,7 @@ Your results are stored per session, or you can
 create an account, and this way your scores are saved
 and can be reached from different devices.
 
-The game is implemented in a way that, it can serve questions
-from two different sources. For the time being the versions are:
-* Open Trivia questions
-* Optometry version (to help learn Optometry students)
-
+(The optometry version has further features)
 
 ## Implementation Details
 
@@ -36,9 +37,6 @@ without the need to sign in or sign up.
 
 The app utilises the Open Trivia Database API (https://opentdb.com/),
 which provides the questions and answers for the Open Trivia version.
-
-The optometry questions are provided by a Cardiff University optometry
-student.
 
 To run the project you have to create a `.env` file
 according to the `.env.example` file with your Firebase

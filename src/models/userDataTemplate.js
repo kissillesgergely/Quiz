@@ -1,19 +1,3 @@
-const userDataOptom = {
-  correct: 0,
-  wrong: 0,
-  difficulties: {
-    easy: {correct: 0, wrong: 0},
-    medium: {correct: 0, wrong: 0},
-    hard: {correct: 0, wrong: 0}
-  },
-  categories: {
-    'Ocular Abnormalities': {correct: 0, wrong: 0},
-    'Children and Special Needs': {correct: 0, wrong: 0},
-    'Electrophysiology': {correct: 0, wrong: 0},
-    'Dispensing': {correct: 0, wrong: 0}
-  },
-}
-
 const userDataGeneral = {
   correct: 0,
   wrong: 0,
@@ -50,4 +34,4 @@ const userDataGeneral = {
   },
 }
 
-export const userDataTemplate = process.env.VUE_APP_VERSION === 'Optom' ? userDataOptom : userDataGeneral;
+export const userDataTemplate = userDataGeneral;
